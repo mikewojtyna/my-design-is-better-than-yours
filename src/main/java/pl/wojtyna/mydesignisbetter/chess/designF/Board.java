@@ -1,4 +1,4 @@
-package pl.wojtyna.mydesignisbetter.chess.designE;
+package pl.wojtyna.mydesignisbetter.chess.designF;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,15 +7,22 @@ public class Board {
 
     private List<Field> fields = initBoard();
     private Color whoseTurn = Color.WHITE;
+    private DomainEvents uncommitedEvents = DomainEvents.empty();
+
+    void apply(DomainEvent event) {
+        uncommitedEvents = uncommitedEvents.append(event);
+    }
 
     private List<Field> initBoard() {
         throw new UnsupportedOperationException("init board logic");
     }
 
-    public void move(Position piecePosition, Position targetPosition) {
-        findPieceAtPosition(piecePosition)
+    public DomainEvents move(Position piecePosition, Position targetPosition) {
+        var events = findPieceAtPosition(piecePosition)
             .filter(piece -> piece.color() == whoseTurn)
-            .ifPresent(piece -> piece.move(piecePosition, targetPosition, this));
+            .map(piece -> piece.move(piecePosition, targetPosition, this)).orElse(DomainEvents.empty());
+        uncommitedEvents = uncommitedEvents.append(events);
+        return uncommitedEvents;
     }
 
     void removePieceFromOldPositionAndSetPieceToTargetPosition(Position piecePosition,

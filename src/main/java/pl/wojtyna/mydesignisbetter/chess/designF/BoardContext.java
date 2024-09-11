@@ -1,4 +1,4 @@
-package pl.wojtyna.mydesignisbetter.chess.designE;
+package pl.wojtyna.mydesignisbetter.chess.designF;
 
 import java.util.List;
 
