@@ -1,5 +1,6 @@
 package pl.wojtyna.mydesignisbetter.chess.designF;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public record DomainEvents(List<DomainEvent> events) {
@@ -8,11 +9,13 @@ public record DomainEvents(List<DomainEvent> events) {
 
     public DomainEvents append(DomainEvents events) {
         // ...
-        return this;
+        var newEvents = new ArrayList<>(this.events);
+        newEvents.addAll(events.events);
+        return new DomainEvents(newEvents);
     }
 
     public DomainEvents append(DomainEvent event) {
         // ...
-        return this;
+        return append(new DomainEvents(List.of(event)));
     }
 }

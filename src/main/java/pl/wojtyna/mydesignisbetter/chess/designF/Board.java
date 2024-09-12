@@ -23,7 +23,7 @@ public class Board {
     }
 
     void apply(DomainEvent event) {
-        uncommitedEvents = uncommitedEvents.append(event);
+        // reconstruct state
     }
 
     void removePieceFromOldPositionAndSetPieceToTargetPosition(Position piecePosition,
@@ -31,11 +31,11 @@ public class Board {
         throw new UnsupportedOperationException("move piece logic");
     }
 
-    private List<Field> initBoard() {
-        throw new UnsupportedOperationException("init board logic");
+    Optional<Piece> findPieceAtPosition(Position piecePosition) {
+        throw new UnsupportedOperationException("find piece logic");
     }
 
-    private Optional<Piece> findPieceAtPosition(Position piecePosition) {
-        throw new UnsupportedOperationException("find piece logic");
+    private List<Field> initBoard() {
+        throw new UnsupportedOperationException("init board logic");
     }
 }
