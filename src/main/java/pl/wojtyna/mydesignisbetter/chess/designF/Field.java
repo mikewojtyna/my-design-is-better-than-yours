@@ -1,10 +1,14 @@
 package pl.wojtyna.mydesignisbetter.chess.designF;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class Field {
+public final class Field implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 42L;
     private Position position;
     private Piece piece;
 

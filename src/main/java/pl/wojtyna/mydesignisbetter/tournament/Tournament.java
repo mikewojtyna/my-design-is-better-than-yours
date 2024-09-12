@@ -2,11 +2,15 @@ package pl.wojtyna.mydesignisbetter.tournament;
 
 import pl.wojtyna.mydesignisbetter.chess.designF.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Tournament {
+public class Tournament implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 42L;
     private final int MAX_EFFECTS_PER_PLAYER = 10;
     private Map<Board, List<Player>> boards;
 

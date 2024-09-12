@@ -1,10 +1,14 @@
 package pl.wojtyna.mydesignisbetter.chess.designE;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public class Board {
+public class Board implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 42L;
     private final List<Field> fields = initBoard();
     private final Color whoseTurn = Color.WHITE;
 

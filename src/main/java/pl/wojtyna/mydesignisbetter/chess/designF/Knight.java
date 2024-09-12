@@ -1,9 +1,14 @@
 package pl.wojtyna.mydesignisbetter.chess.designF;
 
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
-public class Knight implements Piece {
+public class Knight implements Piece, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 42L;
 
     @Override
     public Power power() {

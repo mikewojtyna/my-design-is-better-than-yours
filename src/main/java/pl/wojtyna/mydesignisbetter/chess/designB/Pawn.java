@@ -1,4 +1,4 @@
-package pl.wojtyna.mydesignisbetter.chess.designD;
+package pl.wojtyna.mydesignisbetter.chess.designB;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,8 +9,8 @@ public class Pawn implements Piece, Serializable {
     private static final long serialVersionUID = 42L;
 
     @Override
-    public boolean isMoveValid(Position source, Position target, BoardContext boardContext) {
-        return false;
+    public PieceType type() {
+        return null;
     }
 
     @Override
