@@ -23,6 +23,10 @@ public class Board implements Serializable {
         throw new UnsupportedOperationException("move piece logic");
     }
 
+    void removePiece(Position position) {
+        throw new UnsupportedOperationException("remove piece logic");
+    }
+
     private List<Field> initBoard() {
         throw new UnsupportedOperationException("init board logic");
     }

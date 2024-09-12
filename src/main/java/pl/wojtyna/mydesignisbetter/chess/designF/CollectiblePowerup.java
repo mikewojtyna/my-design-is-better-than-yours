@@ -3,7 +3,7 @@ package pl.wojtyna.mydesignisbetter.chess.designF;
 public record CollectiblePowerup() implements Powerup {
 
     @Override
-    public DomainEvents collect() {
+    public DomainEvents whenMovedOn(Piece piece) {
         return DomainEvents.empty().append(new PowerupCollected(someEffect()));
     }
 

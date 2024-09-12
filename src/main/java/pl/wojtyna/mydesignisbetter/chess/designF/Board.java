@@ -10,7 +10,7 @@ public class Board implements Serializable {
     @Serial
     private static final long serialVersionUID = 42L;
     private final List<Field> fields = initBoard();
-    private final Color whoseTurn = Color.WHITE;
+    private Color whoseTurn = Color.WHITE;
     private DomainEvents uncommitedEvents = DomainEvents.empty();
 
     public DomainEvents move(Position piecePosition, Position targetPosition) {
@@ -24,6 +24,10 @@ public class Board implements Serializable {
     public void apply(Effect effect) {
         // some validation perhaps? e.g. max number of effect applied
         effect.apply(this);
+    }
+
+    void setWhoseTurn(Color color) {
+        this.whoseTurn = color;
     }
 
     void apply(DomainEvent event) {
