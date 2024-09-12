@@ -43,7 +43,8 @@ public class SimpleChess {
 
                 // Switch turns
                 isWhiteTurn = !isWhiteTurn;
-            } else {
+            }
+            else {
                 System.out.println("Invalid move, try again.");
             }
         }
@@ -63,7 +64,12 @@ public class SimpleChess {
     }
 
     // Basic validation for pawn moves (can be extended for other pieces)
-    public static boolean isValidMove(String[][] board, int fromRow, int fromCol, int toRow, int toCol, boolean isWhiteTurn) {
+    public static boolean isValidMove(String[][] board,
+                                      int fromRow,
+                                      int fromCol,
+                                      int toRow,
+                                      int toCol,
+                                      boolean isWhiteTurn) {
         String piece = board[fromRow][fromCol];
 
         // Check if the piece belongs to the current player
@@ -81,9 +87,7 @@ public class SimpleChess {
             }
 
             // Double step move from starting position
-            if (fromCol == toCol && board[toRow][toCol].equals(" ") && (fromRow == 6 || fromRow == 1) && toRow == fromRow + 2 * direction) {
-                return true;
-            }
+            return fromCol == toCol && board[toRow][toCol].equals(" ") && (fromRow == 6 || fromRow == 1) && toRow == fromRow + 2 * direction;
         }
 
         return false;

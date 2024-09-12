@@ -11,12 +11,12 @@ public class Knight implements Piece {
         }
     }
 
-    private boolean isMoveValid(Position source, Position target, Board board) {
-        return false;
-    }
-
     @Override
     public Color color() {
         return null;
+    }
+
+    private boolean isMoveValid(Position source, Position target, Board board) {
+        return false;
     }
 }

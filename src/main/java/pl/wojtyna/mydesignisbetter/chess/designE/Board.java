@@ -5,12 +5,8 @@ import java.util.Optional;
 
 public class Board {
 
-    private List<Field> fields = initBoard();
-    private Color whoseTurn = Color.WHITE;
-
-    private List<Field> initBoard() {
-        throw new UnsupportedOperationException("init board logic");
-    }
+    private final List<Field> fields = initBoard();
+    private final Color whoseTurn = Color.WHITE;
 
     public void move(Position piecePosition, Position targetPosition) {
         findPieceAtPosition(piecePosition)
@@ -21,6 +17,10 @@ public class Board {
     void removePieceFromOldPositionAndSetPieceToTargetPosition(Position piecePosition,
                                                                Position targetPosition) {
         throw new UnsupportedOperationException("move piece logic");
+    }
+
+    private List<Field> initBoard() {
+        throw new UnsupportedOperationException("init board logic");
     }
 
     private Optional<Piece> findPieceAtPosition(Position piecePosition) {

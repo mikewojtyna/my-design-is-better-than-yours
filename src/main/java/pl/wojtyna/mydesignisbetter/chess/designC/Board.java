@@ -5,18 +5,18 @@ import java.util.Optional;
 
 public class Board {
 
-    private List<Field> fields = initBoard();
-    private Color whoseTurn = Color.WHITE;
-
-    private List<Field> initBoard() {
-        throw new UnsupportedOperationException("init board logic");
-    }
+    private final List<Field> fields = initBoard();
+    private final Color whoseTurn = Color.WHITE;
 
     void move(Position piecePosition, Position targetPosition) {
         findPieceAtPosition(piecePosition)
             .filter(piece -> piece.color() == whoseTurn)
             .filter(piece -> piece.isMoveValid(piecePosition, targetPosition))
             .ifPresent(piece -> removePieceFromOldPositionAndSetPieceToTargetPosition(piecePosition, targetPosition));
+    }
+
+    private List<Field> initBoard() {
+        throw new UnsupportedOperationException("init board logic");
     }
 
     private void removePieceFromOldPositionAndSetPieceToTargetPosition(Position piecePosition,

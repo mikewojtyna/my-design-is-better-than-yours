@@ -4,12 +4,8 @@ import java.util.Optional;
 
 public class Board {
 
-    private Field[] fields = initBoard();
-    private Color whoseTurn = Color.WHITE;
-
-    private Field[] initBoard() {
-        throw new UnsupportedOperationException("init board logic");
-    }
+    private final Field[] fields = initBoard();
+    private final Color whoseTurn = Color.WHITE;
 
     void move(Position piecePosition, Position targetPosition) {
         findPieceAtPosition(piecePosition).ifPresent(piece -> {
@@ -21,6 +17,10 @@ public class Board {
                 }
             }
         });
+    }
+
+    private Field[] initBoard() {
+        throw new UnsupportedOperationException("init board logic");
     }
 
     private void moveKnight(Position piecePosition, Position targetPosition) {
