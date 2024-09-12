@@ -1,4 +1,4 @@
-package pl.wojtyna.mydesignisbetter.chess.tournament;
+package pl.wojtyna.mydesignisbetter.tournament;
 
 import pl.wojtyna.mydesignisbetter.chess.designF.*;
 
