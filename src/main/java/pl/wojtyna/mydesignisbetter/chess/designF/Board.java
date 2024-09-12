@@ -5,17 +5,9 @@ import java.util.Optional;
 
 public class Board {
 
-    private List<Field> fields = initBoard();
-    private Color whoseTurn = Color.WHITE;
+    private final List<Field> fields = initBoard();
+    private final Color whoseTurn = Color.WHITE;
     private DomainEvents uncommitedEvents = DomainEvents.empty();
-
-    void apply(DomainEvent event) {
-        uncommitedEvents = uncommitedEvents.append(event);
-    }
-
-    private List<Field> initBoard() {
-        throw new UnsupportedOperationException("init board logic");
-    }
 
     public DomainEvents move(Position piecePosition, Position targetPosition) {
         var events = findPieceAtPosition(piecePosition)
@@ -25,9 +17,22 @@ public class Board {
         return uncommitedEvents;
     }
 
+    public void apply(Effect effect) {
+        // some validation perhaps? e.g. max number of effect applied
+        effect.apply(this);
+    }
+
+    void apply(DomainEvent event) {
+        uncommitedEvents = uncommitedEvents.append(event);
+    }
+
     void removePieceFromOldPositionAndSetPieceToTargetPosition(Position piecePosition,
                                                                Position targetPosition) {
         throw new UnsupportedOperationException("move piece logic");
+    }
+
+    private List<Field> initBoard() {
+        throw new UnsupportedOperationException("init board logic");
     }
 
     private Optional<Piece> findPieceAtPosition(Position piecePosition) {
