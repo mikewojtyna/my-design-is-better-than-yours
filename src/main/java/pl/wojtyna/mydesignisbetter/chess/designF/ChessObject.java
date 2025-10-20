@@ -1,3 +1,6 @@
 package pl.wojtyna.mydesignisbetter.chess.designF;
 
-public interface ChessObject {}
+public interface ChessObject {
+
+    DomainEvents whenMovedOn(Piece piece);
+}

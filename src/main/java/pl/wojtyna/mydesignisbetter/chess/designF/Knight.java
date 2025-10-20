@@ -29,6 +29,11 @@ public class Knight implements Piece, Serializable {
         return null;
     }
 
+    @Override
+    public DomainEvents whenMovedOn(Piece piece) {
+        return null;
+    }
+
     private boolean isMoveValid(Position source,
                                 Position target,
                                 Board board) {

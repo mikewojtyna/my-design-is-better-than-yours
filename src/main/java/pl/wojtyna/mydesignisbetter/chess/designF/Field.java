@@ -10,29 +10,29 @@ public final class Field implements Serializable {
     @Serial
     private static final long serialVersionUID = 42L;
     private Position position;
-    private Piece piece;
+    private ChessObject chessObject;
 
-    public Field(Position position, Piece piece) {
+    public Field(Position position, ChessObject chessObject) {
         this.position = position;
-        this.piece = piece;
+        this.chessObject = chessObject;
     }
 
     public Field(Position position) {
         this.position = position;
-        piece = null;
+        chessObject = null;
     }
 
     public void setPosition(Position position) {
         this.position = position;
     }
 
-    public void setPiece(Piece piece) {
-        this.piece = piece;
+    public void setChessObject(Piece chessObject) {
+        this.chessObject = chessObject;
     }
 
     public Position position() {return position;}
 
-    public Optional<Piece> piece() {return Optional.ofNullable(piece);}
+    public Optional<ChessObject> object() {return Optional.ofNullable(chessObject);}
 
     @Override
     public boolean equals(Object obj) {
@@ -44,19 +44,19 @@ public final class Field implements Serializable {
         }
         var that = (Field) obj;
         return Objects.equals(this.position, that.position) &&
-               Objects.equals(this.piece, that.piece);
+               Objects.equals(this.chessObject, that.chessObject);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, piece);
+        return Objects.hash(position, chessObject);
     }
 
     @Override
     public String toString() {
         return "Field[" +
                "position=" + position + ", " +
-               "piece=" + piece + ']';
+               "piece=" + chessObject + ']';
     }
 
 }

@@ -18,7 +18,9 @@ public class Pawn implements Piece, Serializable {
     public DomainEvents move(Position source, Position target, Board board) {
         if (isMoveValid(source, target, board)) {
             board.removePieceFromOldPositionAndSetPieceToTargetPosition(source, target);
-            return new DomainEvents(List.of(new PieceMoved())); // should probably include piece killed if target position contained a weaker piece
+            var movedOnEvents = board.findObjectAtPosition(target).map(chessObject -> chessObject.whenMovedOn(this))
+                                     .orElse(DomainEvents.empty());
+            return new DomainEvents(List.of(new PieceMoved())).append(movedOnEvents); // should probably include piece killed if target position contained a weaker piece
         }
         return DomainEvents.empty();
     }
@@ -26,6 +28,11 @@ public class Pawn implements Piece, Serializable {
     @Override
     public Color color() {
         return null;
+    }
+
+    @Override
+    public DomainEvents whenMovedOn(Piece piece) {
+        return DomainEvents.empty();
     }
 
     private boolean isMoveValid(Position source,

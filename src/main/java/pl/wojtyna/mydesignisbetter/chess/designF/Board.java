@@ -22,7 +22,7 @@ public class Board implements Serializable {
     }
 
     public void apply(Effect effect) {
-        // some validation perhaps? e.g. max number of effect applied
+        // some validation perhaps? e.g. max number of effects applied
         effect.apply(this);
     }
 
@@ -41,6 +41,10 @@ public class Board implements Serializable {
 
     Optional<Piece> findPieceAtPosition(Position piecePosition) {
         throw new UnsupportedOperationException("find piece logic");
+    }
+
+    Optional<ChessObject> findObjectAtPosition(Position piecePosition) {
+        throw new UnsupportedOperationException("find object logic");
     }
 
     private List<Field> initBoard() {
